@@ -1,0 +1,518 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-ajrak-red: #8B1E2D;
+    --color-ajrak-darkred: #66101F;
+    --color-indigo-deep: #16203B;
+    --color-sand-cream: #FDFBF7;
+    --color-warm-beige: #F4EFE6;
+    --color-sindh-gold: #C99700;
+    --color-verified-green: #15803D;
+    --color-suspicious-red: #DC2626;
+  }
+
+  body {
+    background-color: #0b0f19;
+    color: #f1f5f9;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Authentic Sindhi Ajrak Block Print Background (Dark Mode) */
+.bg-ajrak-pattern {
+  position: relative;
+  background-color: #0c101c;
+  background-image: 
+    linear-gradient(180deg, rgba(12, 16, 28, 0.88) 0%, rgba(12, 16, 28, 0.94) 100%),
+    url('/ajrak_background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.bg-ajrak-subtle {
+  background-image: 
+    linear-gradient(180deg, rgba(12, 16, 28, 0.92) 0%, rgba(12, 16, 28, 0.96) 100%),
+    url('/ajrak_background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Glassmorphism & Modern Card Elevation */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(20, 29, 52, 0.85);
+  border-color: rgba(217, 119, 6, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(217, 119, 6, 0.15);
+}
+
+/* Glow and gradient effects */
+.glow-verified {
+  box-shadow: 0 0 25px -4px rgba(34, 197, 94, 0.4), inset 0 0 12px -2px rgba(34, 197, 94, 0.2);
+}
+
+.glow-suspicious {
+  box-shadow: 0 0 30px -4px rgba(239, 68, 68, 0.5), inset 0 0 15px -2px rgba(239, 68, 68, 0.25);
+}
+
+.glow-gold {
+  box-shadow: 0 0 25px -4px rgba(217, 119, 6, 0.4), inset 0 0 12px -2px rgba(217, 119, 6, 0.2);
+}
+
+/* Keyframe Animations */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-1.5deg);
+  }
+}
+
+@keyframes laser-sweep {
+  0% {
+    top: 10%;
+    opacity: 0.2;
+  }
+  50% {
+    top: 90%;
+    opacity: 1;
+  }
+  100% {
+    top: 10%;
+    opacity: 0.2;
+  }
+}
+
+@keyframes shimmer-sheen {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 7s ease-in-out infinite 1s;
+}
+
+.animate-laser {
+  animation: laser-sweep 2.2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.animate-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  animation: shimmer-sheen 3s infinite;
+}
+
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 28s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+::-webkit-scrollbar-thumb {
+  background: #253347;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b4e6b;
+}
+
+/* ============================================================
+   LIGHT THEME DESIGN SYSTEM (INDUS HERITAGE PALETTE)
+   Warm Ivory, Sindh Terracotta, Indigo Accents & High Contrast
+   ============================================================ */
+
+.light-mode {
+  background-color: #faf8f5 !important;
+  color: #1e293b !important;
+}
+
+.light-mode body {
+  background-color: #faf8f5 !important;
+  color: #1e293b !important;
+}
+
+/* Light Mode Authentic Ajrak Background: Warm Ivory overlay on authentic Ajrak textile */
+.light-mode.bg-ajrak-pattern,
+.light-mode .bg-ajrak-pattern {
+  background-color: #faf8f5 !important;
+  background-image: 
+    linear-gradient(180deg, rgba(250, 248, 245, 0.82) 0%, rgba(250, 248, 245, 0.92) 100%),
+    url('/ajrak_background.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+.light-mode .bg-ajrak-subtle {
+  background-image: 
+    linear-gradient(180deg, rgba(250, 248, 245, 0.88) 0%, rgba(250, 248, 245, 0.95) 100%),
+    url('/ajrak_background.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Header & Navigation in Light Mode */
+.light-mode header {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Card Elevations & Surface Panels */
+.light-mode .bg-slate-900,
+.light-mode .bg-slate-900\/50,
+.light-mode .bg-slate-900\/60,
+.light-mode .bg-slate-900\/70,
+.light-mode .bg-slate-900\/80,
+.light-mode .bg-slate-900\/90 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02) !important;
+}
+
+.light-mode .bg-slate-950,
+.light-mode .bg-slate-950\/60,
+.light-mode .bg-slate-950\/70,
+.light-mode .bg-slate-950\/80,
+.light-mode .bg-slate-950\/90 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+.light-mode .bg-slate-800,
+.light-mode .bg-slate-800\/40,
+.light-mode .bg-slate-800\/60,
+.light-mode .bg-slate-800\/80 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Glassmorphism in Light Mode */
+.light-mode .glass-panel {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02) !important;
+}
+
+.light-mode .glass-panel-hover:hover {
+  background: #ffffff !important;
+  border-color: rgba(217, 119, 6, 0.5) !important;
+  box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Typography Overrides */
+.light-mode .text-white {
+  color: #0f172a !important;
+}
+
+.light-mode .text-slate-100,
+.light-mode .text-slate-200 {
+  color: #1e293b !important;
+}
+
+.light-mode .text-slate-300 {
+  color: #334155 !important;
+}
+
+.light-mode .text-slate-400,
+.light-mode .text-slate-500 {
+  color: #64748b !important;
+}
+
+/* Accent texts with proper dark contrast on light */
+.light-mode .text-amber-300 {
+  color: #b45309 !important;
+}
+
+.light-mode .text-amber-400 {
+  color: #d97706 !important;
+}
+
+.light-mode .text-emerald-400,
+.light-mode .text-emerald-300 {
+  color: #15803d !important;
+}
+
+.light-mode .text-rose-400,
+.light-mode .text-rose-300 {
+  color: #be123c !important;
+}
+
+.light-mode .text-blue-400,
+.light-mode .text-blue-300 {
+  color: #1d4ed8 !important;
+}
+
+.light-mode .text-purple-400,
+.light-mode .text-purple-300 {
+  color: #7e22ce !important;
+}
+
+/* Borders */
+.light-mode .border-slate-800,
+.light-mode .border-slate-800\/40,
+.light-mode .border-slate-800\/60,
+.light-mode .border-slate-800\/80,
+.light-mode .border-slate-700,
+.light-mode .border-slate-700\/60,
+.light-mode .border-slate-700\/70,
+.light-mode .border-slate-700\/80 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Inputs, Textareas, Selects */
+.light-mode input,
+.light-mode select,
+.light-mode textarea {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.light-mode input::placeholder,
+.light-mode textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+.light-mode input:focus,
+.light-mode select:focus,
+.light-mode textarea:focus {
+  border-color: #8b1e2d !important;
+  box-shadow: 0 0 0 2px rgba(139, 30, 45, 0.15) !important;
+}
+
+/* Buttons with colored fills keep white text */
+.light-mode .bg-blue-600,
+.light-mode .bg-blue-500,
+.light-mode .bg-purple-600,
+.light-mode .bg-purple-700,
+.light-mode .bg-rose-700,
+.light-mode .bg-rose-800,
+.light-mode .bg-emerald-600,
+.light-mode .bg-emerald-700,
+.light-mode [class*="from-rose-"],
+.light-mode [class*="from-purple-"],
+.light-mode [class*="from-blue-"],
+.light-mode [class*="bg-gradient-to-r"] {
+  color: #ffffff !important;
+}
+
+.light-mode [class*="from-rose-"] *,
+.light-mode [class*="from-purple-"] *,
+.light-mode [class*="from-blue-"] *,
+.light-mode [class*="bg-gradient-to-r"] * {
+  color: inherit;
+}
+
+/* Amber buttons text */
+.light-mode .bg-amber-500,
+.light-mode .bg-amber-400 {
+  color: #0f172a !important;
+}
+
+/* Subtle Badges */
+.light-mode .bg-emerald-950,
+.light-mode .bg-emerald-950\/60,
+.light-mode .bg-emerald-950\/80,
+.light-mode .bg-emerald-950\/90 {
+  background-color: #dcfce7 !important;
+  color: #15803d !important;
+  border-color: #86efac !important;
+}
+
+.light-mode .bg-rose-950,
+.light-mode .bg-rose-950\/60,
+.light-mode .bg-rose-950\/80,
+.light-mode .bg-rose-950\/90 {
+  background-color: #ffe4e6 !important;
+  color: #b91c1c !important;
+  border-color: #fca5a5 !important;
+}
+
+.light-mode .bg-amber-950,
+.light-mode .bg-amber-950\/60,
+.light-mode .bg-amber-950\/80,
+.light-mode .bg-amber-950\/90 {
+  background-color: #fef3c7 !important;
+  color: #b45309 !important;
+  border-color: #fcd34d !important;
+}
+
+.light-mode .bg-blue-950,
+.light-mode .bg-blue-950\/60,
+.light-mode .bg-blue-950\/80,
+.light-mode .bg-blue-950\/90 {
+  background-color: #dbeafe !important;
+  color: #1d4ed8 !important;
+  border-color: #93c5fd !important;
+}
+
+.light-mode .bg-purple-950,
+.light-mode .bg-purple-950\/60,
+.light-mode .bg-purple-950\/80,
+.light-mode .bg-purple-950\/90 {
+  background-color: #f3e8ff !important;
+  color: #7e22ce !important;
+  border-color: #d8b4fe !important;
+}
+
+/* Modals Backdrop */
+.light-mode .bg-slate-950\/85 {
+  background-color: rgba(15, 23, 42, 0.45) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Tables */
+.light-mode thead {
+  background-color: #f8fafc !important;
+  color: #475569 !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+.light-mode tr:hover {
+  background-color: #f8fafc !important;
+}
+
+/* Footer */
+.light-mode footer {
+  background-color: #f8fafc !important;
+  border-top-color: #e2e8f0 !important;
+}
+
+/* Scrollbars in Light Mode */
+.light-mode ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.light-mode ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+.light-mode ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ============================================================
+   HERO INTERACTIVE HEADLINE TYPOGRAPHY & LIGHT MODE CONTRAST
+   ============================================================ */
+.hero-title-main {
+  color: #f8fafc;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.light-mode .hero-title-main {
+  color: #0f172a !important;
+}
+
+.hero-title-gradient {
+  background: linear-gradient(135deg, #fcd34d 0%, #fda4af 50%, #fbbf24 100%);
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.light-mode .hero-title-gradient {
+  background: linear-gradient(135deg, #8B1E2D 0%, #B45309 45%, #66101F 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline-block;
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
